@@ -1,0 +1,529 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/ebro033/dz/blob/main/kr1.ipynb(16.11)\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Напишите функцию на Python, которая находит наименьшее число в списке целых чисел. Но если список пуст, функция должна вызывать исключение.\n",
+        "Функция должна принимать список целых чисел в качестве аргумента и возвращать наименьшее число в этом списке. Если список пуст, функция должна вызывать исключение ValueError с сообщением \"Список пуст!\".\n",
+        "\n",
+        "Пример входных данных:  4 8 2 16 32 77  \n",
+        "Пример выходных данных: 2"
+      ],
+      "metadata": {
+        "id": "Bit3JIbon220"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 16,
+      "metadata": {
+        "id": "PjpAD-5Nn0OT",
+        "outputId": "6d6e47b8-8777-47e4-99c9-0b125073ca4c",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Наименьшее число: 1\n"
+          ]
+        }
+      ],
+      "source": [
+        "def find_min_number(numbers):\n",
+        "    if not numbers:\n",
+        "        raise ValueError(\"Список пуст!\")\n",
+        "    return min(numbers)\n",
+        "\n",
+        "input_numbers = [1, 82, 2222, 1, 332, 87]\n",
+        "try:\n",
+        "    result = find_min_number(input_numbers)\n",
+        "    print(\"Наименьшее число:\", result)\n",
+        "except ValueError as e:\n",
+        "    print(e)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Напишите функцию на Python, которая находит наибольшее число в списке целых чисел. Но если список пуст, функция должна вызывать исключение.\n",
+        "Функция должна принимать список целых чисел в качестве аргумента и возвращать наибольшее число в этом списке. Если список пуст, функция должна вызывать исключение ValueError с сообщением \"Список пуст!\".\n",
+        "\n",
+        "\n",
+        "Пример входных данных: 4 8 2 16 32 77  \n",
+        "Пример выходных данных: 77"
+      ],
+      "metadata": {
+        "id": "VTkEP1LQo6N0"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def find_max_number(numbers):\n",
+        "    if not numbers:\n",
+        "        raise ValueError(\"Список пуст!\")\n",
+        "    return max(numbers)\n",
+        "\n",
+        "input_numbers = [99999, 21, 23, 16, 52, 770]\n",
+        "try:\n",
+        "    result = find_max_number(input_numbers)\n",
+        "    print(\"Наибольшее число:\", result)\n",
+        "except ValueError as e:\n",
+        "    print(e)"
+      ],
+      "metadata": {
+        "id": "l_P-LzEEpO9R",
+        "outputId": "43b12b55-a15f-4501-cd5b-c4816535fe9f",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 17,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Наибольшее число: 99999\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Реализуйте пузырьковую сортировку на Python для списка целых чисел. Но функция должна обрабатывать случаи, когда список пуст или содержит только один элемент.\n",
+        "Функция должна принимать список целых чисел в качестве аргумента и возвращать отсортированный список в порядке возрастания с помощью пузырьковой сортировки. Если список пуст или содержит только один элемент, функция должна возвращать исходный список.\n",
+        "\n",
+        "\n",
+        "Пример входных данных:  4 8 2 16 32 77  \n",
+        "Пример выходных данных: 2 4 8 16 32 77"
+      ],
+      "metadata": {
+        "id": "enNe7Fp7pOSR"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def bubble_sort(input_list):\n",
+        "    n = len(input_list)\n",
+        "\n",
+        "    for i in range(n):\n",
+        "        for j in range(0, n-i-1):\n",
+        "            if input_list[j] > input_list[j+1]:\n",
+        "                input_list[j], input_list[j+1] = input_list[j+1], input_list[j]\n",
+        "\n",
+        "    return input_list if n > 1 else input_list\n",
+        "\n",
+        "input_numbers = [11, 34, 865, 5786, 2, 1]\n",
+        "sorted_numbers = bubble_sort(input_numbers)\n",
+        "print(\"Отсортированный список:\", sorted_numbers)"
+      ],
+      "metadata": {
+        "id": "B_dysWM-peCC",
+        "outputId": "e3e5d66e-ce71-45af-a5c6-9804cd6461e3",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 19,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Отсортированный список: [1, 2, 11, 34, 865, 5786]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Реализуйте сортировку выбором на Python для списка целых чисел. Но функция должна обрабатывать случаи, когда список пуст или содержит только один элемент.\n",
+        "Функция должна принимать список целых чисел в качестве аргумента и возвращать отсортированный список с помощью сортировки выбором. Если список пуст или содержит только один элемент, функция должна возвращать исходный список.\n",
+        "\n",
+        "\n",
+        "Пример входных данных: 4 8 2 16 32 77  \n",
+        "Пример выходных данных: 77 32 16 8 4 2"
+      ],
+      "metadata": {
+        "id": "zWyl2cwfpelJ"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def selection_sort(input_list):\n",
+        "    n = len(input_list)\n",
+        "\n",
+        "    for i in range(n):\n",
+        "        min_index = i\n",
+        "        for j in range(i+1, n):\n",
+        "            if input_list[j] < input_list[min_index]:\n",
+        "                min_index = j\n",
+        "\n",
+        "        input_list[i], input_list[min_index] = input_list[min_index], input_list[i]\n",
+        "\n",
+        "    return input_list if n > 1 else input_list\n",
+        "\n",
+        "input_numbers = [3, 1, 2, 126, 77, 77]\n",
+        "sorted_numbers = selection_sort(input_numbers)\n",
+        "print(\"Отсортированный список:\", sorted_numbers)"
+      ],
+      "metadata": {
+        "id": "-Gw1J1x1ph05",
+        "outputId": "3a47f338-0cf4-4462-9650-db0d0258bb82",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 21,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Отсортированный список: [1, 2, 3, 77, 77, 126]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Напишите программу на Python, которая вычисляет объем свободной оперативной памяти на компьютере. Но программа должна также выводить на экран общий объем оперативной памяти и объем, занятый системой.\n",
+        "Программа должна выводить на экран три значения: общий объем оперативной памяти, объем памяти, занятый системой, и объем свободной оперативной памяти, используя модуль psutil.\n",
+        "\n",
+        "\n",
+        "Пример входных данных:  \n",
+        "\\-  \n",
+        "Пример выходных данных:  \n",
+        "Общий объем: 16 гб  \n",
+        "Занято системой: 3 гб  \n",
+        "Свободно: 13 гб"
+      ],
+      "metadata": {
+        "id": "2qENal6hpig2"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import psutil#\n",
+        "\n",
+        "def get_memory_info():\n",
+        "    memory_info = psutil.virtual_memory()\n",
+        "\n",
+        "    total_memory_gb = round(memory_info.total / (1024 ** 3), 2)\n",
+        "    used_memory_gb = round(memory_info.used / (1024 ** 3), 2)\n",
+        "    free_memory_gb = round(memory_info.available / (1024 ** 3), 2)  # Меняем на 'available'\n",
+        "\n",
+        "    print(f\"Общий объем: {total_memory_gb} гб\")\n",
+        "    print(f\"Занято системой: {used_memory_gb} гб\")\n",
+        "    print(f\"Свободно: {free_memory_gb} гб\")\n",
+        "get_memory_info()"
+      ],
+      "metadata": {
+        "id": "ZMNRYcVIp2Ju",
+        "outputId": "09d2e3cc-e6ea-4633-d916-d7994ff969ae",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 25,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Общий объем: 12.68 гб\n",
+            "Занято системой: 0.59 гб\n",
+            "Свободно: 11.82 гб\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Реализуйте алгоритм вставки элемента в отсортированный по убыванию массив целых чисел на Python. Но функция должна обрабатывать случаи, когда массив пуст или содержит только один элемент.\n",
+        "Функция должна принимать отсортированный массив целых чисел и новый элемент в качестве аргументов и возвращать отсортированный массив с добавленным элементом. Если массив пуст или содержит только один элемент, функция должна возвращать массив с добавленным элементом.\n",
+        "В первый аргумент функции записывается вставляемое число, а во второй список.\n",
+        "\n",
+        "\n",
+        "Пример входных данных:  \n",
+        "20  \n",
+        "77 32 16 8 4 2  \n",
+        "Пример выходных данных:  \n",
+        "77 32 20 16 8 4 2"
+      ],
+      "metadata": {
+        "id": "jq4RhBDmp2wD"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#input отказывается работать\n",
+        "\n",
+        "import builtins\n",
+        "\n",
+        "new_element = int(builtins.input(\"Введите новый элемент: \"))\n",
+        "user_input = builtins.input(\"Введите отсортированный массив целых чисел, разделенных пробелами: \")\n",
+        "\n",
+        "# Преобразование введенной строки в список целых чисел\n",
+        "sorted_array = [int(num) for num in user_input.split()]\n",
+        "\n",
+        "# Вызов функции\n",
+        "result = insert_into_sorted_array(new_element, sorted_array)\n",
+        "print(result)"
+      ],
+      "metadata": {
+        "id": "q1nqOjl6qAq3",
+        "outputId": "ec21a759-dd45-4034-df68-c1ab23b49295",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 43,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Введите новый элемент: 9\n",
+            "Введите отсортированный массив целых чисел, разделенных пробелами: 7 3 4\n",
+            "[9, 7, 3, 4]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Реализуйте стек на Python с помощью связанного списка и напишите функции для добавления, удаления и просмотра элементов стека.\n",
+        "Стек должен быть реализован с помощью связанного списка, а не списка. Функции должны реализовывать операции push, pop и peek."
+      ],
+      "metadata": {
+        "id": "3XlghGQXqBYs"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "class Node:\n",
+        "    def __init__(self, data):\n",
+        "        self.data = data\n",
+        "        self.next = None\n",
+        "\n",
+        "class Stack:\n",
+        "    def __init__(self):\n",
+        "        self.top = None\n",
+        "\n",
+        "    def is_empty(self):\n",
+        "        return self.top is None\n",
+        "\n",
+        "    def push(self, data):\n",
+        "        new_node = Node(data)\n",
+        "        new_node.next = self.top\n",
+        "        self.top = new_node\n",
+        "\n",
+        "    def pop(self):\n",
+        "        if self.is_empty():\n",
+        "            return None\n",
+        "        popped = self.top\n",
+        "        self.top = self.top.next\n",
+        "        return popped.data\n",
+        "\n",
+        "    def peek(self):\n",
+        "        return None if self.is_empty() else self.top.data\n",
+        "\n",
+        "    def display(self):\n",
+        "        current = self.top\n",
+        "        while current:\n",
+        "            print(current.data, end=\" \")\n",
+        "            current = current.next\n",
+        "        print()\n",
+        "\n",
+        "\n",
+        "stack = Stack()\n",
+        "stack.push(1)\n",
+        "stack.push(2)\n",
+        "stack.push(3)\n",
+        "\n",
+        "print(\"после добавления элементов:\")\n",
+        "stack.display()\n",
+        "\n",
+        "print(f\"Вершина стека: {stack.peek()}\")\n",
+        "\n",
+        "popped_element = stack.pop()\n",
+        "print(f\"Извлеченный элемент: {popped_element}\")\n",
+        "\n",
+        "print(\"cтек после извлечения элемента:\")\n",
+        "stack.display()"
+      ],
+      "metadata": {
+        "id": "etXLIGNVqNyl",
+        "outputId": "c9c39965-cb9d-4571-e37d-e1325b2f73a3",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 44,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "после добавления элементов:\n",
+            "3 2 1 \n",
+            "Вершина стека: 3\n",
+            "Извлеченный элемент: 3\n",
+            "cтек после извлечения элемента:\n",
+            "2 1 \n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Напишите рекурсивную функцию на Python для нахождения n-го числа Фибоначчи. Функция должна принимать целое число n в качестве аргумента и возвращать соответствующее число Фибоначчи.\n",
+        "Числа Фибоначчи определяются рекурсивно как сумма двух предыдущих чисел: F(n) = F(n-1) + F(n-2). Например, F(0) = 0, F(1) = 1, F(2) = 1, F(3) = 2 и т.д."
+      ],
+      "metadata": {
+        "id": "Wr8Rb16yqFeQ"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "Goh3ClvOqE1K"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Реализуйте очередь на Python с помощью связанного списка и напишите функции для добавления, удаления и просмотра элементов очереди. Функции должны работать для любого типа данных.\n",
+        "Очередь должна быть реализована с помощью связанного списка, а не списка. Функции должны реализовывать операции enqueue, dequeue и peek. Очередь должна работать для любого типа данных, а не только целых чисел."
+      ],
+      "metadata": {
+        "id": "W9irBB1sqSOE"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "class Node:\n",
+        "    def __init__(self, data):\n",
+        "        self.data = data\n",
+        "        self.next = None\n",
+        "class Queue:\n",
+        "    def __init__(self):\n",
+        "        self.front = self.rear = None\n",
+        "\n",
+        "    def is_empty(self):\n",
+        "        return self.front is None\n",
+        "\n",
+        "    def enqueue(self, data):\n",
+        "        new_node = Node(data)\n",
+        "        if self.is_empty():\n",
+        "            self.front = self.rear = new_node\n",
+        "        else:\n",
+        "            self.rear.next = new_node\n",
+        "            self.rear = new_node\n",
+        "\n",
+        "    def dequeue(self):\n",
+        "        if self.is_empty():\n",
+        "            return None\n",
+        "        popped = self.front\n",
+        "        self.front = self.front.next\n",
+        "        if not self.front:\n",
+        "            self.rear = None\n",
+        "        return popped.data\n",
+        "\n",
+        "    def peek(self):\n",
+        "        return None if self.is_empty() else self.front.data\n",
+        "\n",
+        "    def display(self):\n",
+        "        current = self.front\n",
+        "        while current:\n",
+        "            print(current.data, end=\" \")\n",
+        "            current = current.next\n",
+        "        print()\n",
+        "\n",
+        "queue = Queue()\n",
+        "queue.enqueue(6)\n",
+        "queue.enqueue(21)\n",
+        "queue.enqueue(9)\n",
+        "\n",
+        "print(\"Очередь после добавления элементов:\")\n",
+        "queue.display()\n",
+        "\n",
+        "print(f\"Первый элемент очереди: {queue.peek()}\")\n",
+        "\n",
+        "dequeued_element = queue.dequeue()\n",
+        "print(f\"Извлеченный элемент: {dequeued_element}\")\n",
+        "\n",
+        "print(\"Очередь после извлечения элемента:\")\n",
+        "queue.display()"
+      ],
+      "metadata": {
+        "id": "5dbopNgfqTZS",
+        "outputId": "9b0b6152-3a29-4c9b-f3f5-06ed69a2ffd2",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 46,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Очередь после добавления элементов:\n",
+            "6 21 9 \n",
+            "Первый элемент очереди: 6\n",
+            "Извлеченный элемент: 6\n",
+            "Очередь после извлечения элемента:\n",
+            "21 9 \n"
+          ]
+        }
+      ]
+    }
+  ]
+}
